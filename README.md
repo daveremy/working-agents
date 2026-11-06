@@ -1,5 +1,7 @@
 # Working Agents: a living research program
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24023471.svg)](https://doi.org/10.5281/zenodo.24023471)
+
 **Read it:** [web](https://daveremy.github.io/working-agents/) · [PDF](docs/working-agents.pdf) · [source](docs/index.html)
 
 Working Agents is a series of living working papers that develops a framework for working with AI agents: principles and strategies for operating a fleet of long-running agents, and a software development methodology for agent teams. Each paper mixes theory from older disciplines and current industry research, pragmatic advice, and evidence from a reference implementation (one person working with a fleet of agents organized into one or more teams). This note is the plan and index for the series: the two families (Agent Operations and Development Methodology), which papers build on which, and every published paper, draft and candidate. Each paper is checked weekly and revised under one concept DOI.
@@ -25,7 +27,7 @@ Open an issue on this repository or on the paper's own repository.
 
 ## Versions
 
-- v0.1 (6 November 2026): first version.
+- v0.1 (6 November 2026): first version, [doi:10.5281/zenodo.24023472](https://doi.org/10.5281/zenodo.24023472).
 
 ## License
 
