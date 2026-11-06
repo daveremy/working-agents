@@ -1,0 +1,41 @@
+{
+  "title": "Working Agents: a living research program",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "description": "Working Agents is a series of working papers that develops a framework for working with AI agents: principles and strategies for operating a fleet of long-running agents, and a software development methodology for agent teams. Each paper mixes three things: theory, drawn from older disciplines and from current industry research; pragmatic advice a practitioner can apply; and evidence from a reference implementation, one person working with a fleet of agents organized into one or more teams. This note is the plan and index for the series. It explains how the papers are written, sorts them into two families (Agent Operations and Development Methodology), maps which papers build on which, and lists every published paper, draft and candidate as of 6 November 2026. The papers are living: each is checked every week against the reference implementation and the literature, and revised under one concept DOI, so a citation never breaks.",
+  "creators": [
+    {
+      "name": "Remy, Dave",
+      "affiliation": "Independent"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "AI agents",
+    "agent framework",
+    "agent operations",
+    "software development methodology",
+    "multi-agent systems",
+    "living papers",
+    "research program"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23771170",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23787644",
+      "relation": "references",
+      "scheme": "doi"
+    }
+  ],
+  "communities": [
+    {
+      "identifier": "working-agents"
+    }
+  ],
+  "version": "0.1",
+  "language": "eng"
+}

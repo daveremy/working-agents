@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Working Agents: a living research program. The plan and index for a series of living working papers on a framework for working with AI agents: operating an agent fleet and a software development methodology for agent teams. Working note, draft.">
+<meta name="author" content="Dave Remy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Working Agents: a living research program">
+<meta property="og:description" content="The plan and index for a series of living working papers on a framework for working with AI agents: theory, pragmatic advice, industry research and evidence from a reference implementation.">
+<meta property="og:url" content="https://daveremy.github.io/working-agents/">
+<meta property="og:image" content="https://daveremy.github.io/working-agents/og-cover.png">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="785">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Working Agents: a living research program">
+<meta name="twitter:image" content="https://daveremy.github.io/working-agents/og-cover.png">
+<title>Working Agents: a living research program</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the house working-paper format (copied from Agent Scrum v0.1). Single column, numbered sections, figures and tables as plates. */
+:root{
+  --bg:#f3f5f4;
+  --plate:#ffffff;
+  --ink:#18201d;
+  --ink-2:#4c5753;
+  --rule:#d3dad7;
+  --accent:#1d5f8a;    /* published */
+  --done:#2f7a4f;
+  --warn:#9a6a12;      /* in progress */
+  --soft:#e4eae8;
+  --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121816;--plate:#1a2220;--ink:#e4ebe8;--ink-2:#a2afaa;--rule:#2d3a36;
+    --accent:#6fb0dc;--done:#6cc28f;--warn:#d9ac55;--soft:#22302c;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121816;--plate:#1a2220;--ink:#e4ebe8;--ink-2:#a2afaa;--rule:#2d3a36;
+  --accent:#6fb0dc;--done:#6cc28f;--warn:#d9ac55;--soft:#22302c;color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.62;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:36px 72px;}
+article{max-width:690px;margin:0 auto;min-width:0}
+.disclose{font-family:var(--body);font-style:italic;font-size:.82rem;color:var(--ink-2);margin:2rem 0 0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;font-weight:600;margin:0}
+h1{font-size:2.6rem;letter-spacing:-.01em;margin-bottom:.4rem}
+.subtitle{font-size:1.2rem;color:var(--ink-2);margin:0 0 1.2rem;font-style:italic}
+.byline{font-family:var(--ui);font-size:.78rem;color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.8rem}
+h2{font-size:1.5rem;margin-top:2.8rem;margin-bottom:.8rem}
+h2 .n{font-family:var(--ui);font-size:.95rem;color:var(--accent);font-weight:600;margin-right:.5rem;letter-spacing:.02em}
+h3{font-size:1.15rem;margin-top:1.8rem;margin-bottom:.5rem}
+p{margin:0 0 1rem}
+.abstract{background:var(--plate);border:1px solid var(--rule);border-radius:6px;padding:16px 20px;margin:0 0 1.6rem}
+.abstract .lbl,.kw .lbl{font-family:var(--ui);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;display:block;margin-bottom:.4rem}
+.abstract p{font-size:.98rem;margin:0}
+.kw{font-size:.9rem;color:var(--ink-2);margin:0 0 2rem}
+.kw .lbl{display:inline;margin-right:.4rem}
+code{font-family:var(--mono);font-size:.82em;background:var(--soft);padding:.05em .3em;border-radius:3px}
+ul,ol{padding-left:1.3rem;margin:0 0 1rem}
+li{margin-bottom:.4rem}
+strong{font-weight:600}
+blockquote{margin:0 0 1rem;padding:2px 0 2px 16px;border-left:3px solid var(--rule);color:var(--ink-2);font-style:italic}
+.tw{overflow-x:auto;margin:1.2rem 0 .4rem;background:var(--plate);border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:.86rem;line-height:1.45}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink-2);font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+table.series{font-size:.8rem}
+table.series th,table.series td{padding:6px 9px}
+table.series span.doi{display:block;font-family:var(--mono);font-size:.7rem;color:var(--ink-2);margin-top:2px}
+table.series tr.grp td{background:var(--soft);font-weight:600;color:var(--ink-2);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}
+.st-pub{color:var(--accent);font-weight:600}
+.st-wip{color:var(--warn);font-weight:600}
+.tcap,figcaption{font-family:var(--ui);font-size:.84rem;color:var(--ink-2);margin:.5rem 0 1.6rem;line-height:1.5}
+figure{margin:1.6rem 0 0}
+.plate{background:var(--plate);border:1px solid var(--rule);border-radius:6px;padding:12px;overflow-x:auto}
+.plate svg{display:block;width:100%;height:auto;max-width:100%;min-width:560px}
+svg text{font-family:var(--ui);fill:var(--ink);font-size:13px}
+svg .dim{fill:var(--ink-2);font-size:11.5px}
+svg .t{font-weight:600}
+svg .fam{fill:var(--ink-2);font-size:11px;font-weight:600;letter-spacing:.08em}
+svg .band{fill:var(--soft);stroke:none}
+svg .box{fill:var(--plate);stroke:var(--rule);stroke-width:1.5}
+svg .pub{fill:var(--plate);stroke:var(--accent);stroke-width:2.2}
+svg .wip{fill:var(--plate);stroke:var(--warn);stroke-width:1.6}
+svg .cand{fill:var(--plate);stroke:var(--ink-2);stroke-width:1.3;stroke-dasharray:5 4}
+svg .ln{stroke:var(--ink-2);stroke-width:1.4;fill:none}
+svg .lnd{stroke:var(--ink-2);stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+svg .ta{fill:var(--accent);font-size:11.5px}
+svg .tw2{fill:var(--warn);font-size:11.5px}
+svg .arrow{fill:var(--ink-2)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.refs{font-size:.9rem}
+.refs li{margin-bottom:.5rem}
+@media print{
+  :root{--bg:#fff;--plate:#fff;--ink:#111;--ink-2:#444;--rule:#ccc;--soft:#f0f2f1;color-scheme:light}
+  body{font-size:10.5pt;padding:0;background:#fff}
+  article{max-width:none}
+  .pdflink{display:none}
+  h2{break-after:avoid} h3{break-after:avoid}
+  p:has(+ blockquote){break-after:avoid} blockquote{break-inside:avoid}
+  figure,.tw,.abstract,table,.tblock{break-inside:avoid}
+  table.series{font-size:7.8pt}
+  .plate svg{min-width:0}
+  a{color:inherit;text-decoration:none}
+}
+.pdflink{font-family:var(--ui);font-size:.85rem;margin:-1rem 0 1.6rem}
+</style>
+</head>
+<body>
+<article>
+
+<h1>Working Agents</h1>
+<p class="subtitle">A living research program on frameworks, principles and practices for working with AI agents</p>
+<p class="byline">Dave Remy · Working note · Draft v0.1 · 6 November 2026</p>
+<!-- Placeholder: on publication the PDF is renamed working-agents.pdf and the DOI is added to the byline. -->
+<p class="pdflink"><a href="working-agents.pdf">PDF</a> · DOI to be assigned on publication</p>
+
+<div class="abstract">
+<span class="lbl">Abstract</span>
+<p>Working Agents is a series of working papers that develops a framework for working with AI agents: principles and strategies for operating a fleet of long-running agents, and a software development methodology for agent teams. Each paper mixes three things: theory, drawn from older disciplines and from current industry research; pragmatic advice a practitioner can apply; and evidence from a reference implementation, one person working with a fleet of agents organized into one or more teams. This note is the plan and index for the series. It explains how the papers are written, sorts them into two families (Agent Operations and Development Methodology), maps which papers build on which, and lists every published paper, draft and candidate as of 6 November 2026. The papers are living: each is checked every week against the reference implementation and the literature, and revised under one concept DOI, so a citation never breaks.</p>
+</div>
+<p class="kw"><span class="lbl">Keywords</span>AI agents, multi-agent systems, agent operations, software engineering process, living papers, research program</p>
+
+<h2><span class="n">1</span>Why we write</h2>
+
+<p>The series develops a framework for working with AI agents: principles, strategies and practices for running a fleet of long-running agents, and a software development methodology for agent teams, Agent Scrum [1]. Each paper combines three sources. <strong>Theory</strong> comes from older disciplines, such as quality management and software process improvement, and from current industry research on agents. <strong>Pragmatic advice</strong> says what a practitioner can do with the idea, and what it costs. <strong>Evidence</strong> comes from a reference implementation and is measured, with its denominators and its limits.</p>
+
+<p>The reference implementation is a fleet run by the author: nine named agents that run continuously and handle his life and work (a chief of staff, and agents for health, finance, communications, engineering, operations, customer support, research and marketing) [2], with the engineering agents building software in sprints. The number and roles are not the point. The framework should apply to a fleet with fewer or more agents, and each paper notes where a result depends on this particular setup. We write the papers for three reasons.</p>
+
+<h3>1.1 Writing for a reader exposes gaps in practice</h3>
+
+<p>A practice can work every day and still lack a step that nobody notices until they have to explain it to someone else. The clearest case so far is Kaizen for Agents [3], a paper on continuous improvement in agent teams. To describe the reference implementation's improvement loop, the paper had to show that the fixes proposed in sprint retrospectives worked. It sampled 20 retrospective issues that had been closed as done. Eighteen named a merged change. None recorded a measured effect. The team had a way to find problems and a way to fix them, but no step that checked whether a fix did what it was meant to do.</p>
+
+<p>On the same day, 6 November 2026, the agents scheduled the missing step. Each retrospective fix will include a prediction: what changes, by how much, and how it is measured. A later sprint wrap records a verdict on each prediction that falls due: held, not held, or unmeasurable. Section 11.3 of the paper states its predictions before any data exists. For example, it predicts that at least half of the retrospective fixes filed in the next two weeks will include a prediction, against a baseline of none. The paper's public release waits about two weeks so that its next version can report whether the predictions held.</p>
+
+<p>Writing the paper changed the process it describes. Teaching a practice is a way to learn it. The idea is old. Zinsser argued that writing is a way to learn a subject, not only a way to report on it [10].</p>
+
+<h3>1.2 Papers turn a working practice into a framework others can use</h3>
+
+<p>The reference implementation's working documents change every day, and they are written for the agents. A paper is written for an outside reader. It states a principle, explains why it holds, places it against prior work, shows what happened when we applied it, and gives it an identifier that others can cite. That turns one setup's habits into ideas another team can test in its own setup, and it gives the agents and the people who work with them one place to look for why the practice exists.</p>
+
+<h3>1.3 The evidence comes from one scenario</h3>
+
+<p>Each paper is a working paper or a working note based on one scenario: one person working with a fleet of AI agents, organized in the Scrum sense into one or more agent teams. Scaling these practices to larger human teams is a question for future work. None is a controlled study. Each reports what we did, what we measured and what we did not measure. Numbers come from the reference implementation's own records, and each paper says how they were counted. The theory and the industry research travel further than the evidence: read every measured finding as one case that may or may not hold in a different setup. Section 7 lists the limitations that apply to the whole series.</p>
+
+<h2><span class="n">2</span>The two families</h2>
+
+<p>The papers fall into two families.</p>
+
+<p><strong>Agent Operations</strong> covers how to run a fleet of agents: long-lived sessions, scheduled jobs, memory, coordination between agents, and safety. It has no root paper. Persistent Agents on Claude Code [2] is one member, not the parent: it describes the whole fleet, but in less depth than a dedicated paper would. An overview, provisionally titled "Running an Agent Fleet", may be written last, once enough members exist. It would then become the root.</p>
+
+<p><strong>Development Methodology</strong> covers how the fleet builds software. Agent Scrum [1] is its methodology paper and describes the whole method. Dedicated papers go deeper into one part of it, such as continuous improvement (Kaizen for Agents [3]) or choosing which tests to run in continuous integration (Agents Outrun Their Tests [4]). When a dedicated paper's approach has results, Agent Scrum gets a revision that summarizes the change in a paragraph and cites the dedicated paper for the detail. Agent Scrum does not wait for the dedicated paper to be published. It waits for results: its next version follows a pilot of a new way to estimate stories.</p>
+
+<p>Each paper names the papers it builds on, in its repository and in its Zenodo record. A paper is never recorded as a version of another paper. Figure 1 shows the dependencies. Three cross the family line. Agent Scrum runs on the persistent agents that Persistent Agents describes. Kaizen for Agents discusses a nightly pass that corrects the agents' documents, which Dreams That Commit will describe in full. Agents Outrun Their Tests is about failures that test selection misses, a special case of the checks that report a pass without having tested anything, which the False passes candidate would cover.</p>
+
+<figure>
+<div class="plate">
+<svg viewBox="0 0 720 640" role="img" aria-labelledby="f1t">
+<title id="f1t">Dependency graph of the Working Agents series. Agent Operations: Persistent Agents (published) with Remote Agent Hub, Coordination, Scheduled jobs and Agent memory building on it; Permissions and gates builds on Scheduled jobs; Dreams That Commit builds on Agent memory; False passes stands alone. Development Methodology: Agent Scrum (published) with Agents Outrun Their Tests, Estimating and Kaizen for Agents building on it. Loose links: Agent Scrum to Persistent Agents, Kaizen for Agents to Dreams That Commit, Agents Outrun Their Tests to False passes.</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+
+<!-- this note -->
+<rect class="box" x="160" y="8" width="400" height="44" rx="6"/>
+<text x="360" y="28" text-anchor="middle" class="t">This note: Working Agents</text>
+<text x="360" y="44" text-anchor="middle" class="dim">draft v0.1 · indexes every paper below</text>
+
+<!-- family bands -->
+<rect class="band" x="4" y="64" width="712" height="290" rx="8"/>
+<rect class="band" x="4" y="366" width="712" height="206" rx="8"/>
+<text x="16" y="84" class="fam">AGENT OPERATIONS</text>
+<text x="16" y="99" class="dim">no root paper yet</text>
+<text x="16" y="386" class="fam">DEVELOPMENT METHODOLOGY</text>
+
+<!-- operations nodes -->
+<rect class="pub" x="260" y="90" width="200" height="46" rx="6"/>
+<text x="360" y="110" text-anchor="middle" class="t">Persistent Agents</text>
+<text x="360" y="127" text-anchor="middle" class="ta">v1.2 published</text>
+
+<rect class="wip" x="20" y="190" width="150" height="46" rx="6"/>
+<text x="95" y="210" text-anchor="middle" class="t">Remote Agent Hub</text>
+<text x="95" y="227" text-anchor="middle" class="tw2">requirements</text>
+
+<rect class="cand" x="185" y="190" width="150" height="46" rx="6"/>
+<text x="260" y="210" text-anchor="middle" class="t">Coordination</text>
+<text x="260" y="227" text-anchor="middle" class="dim">candidate</text>
+
+<rect class="cand" x="385" y="190" width="150" height="46" rx="6"/>
+<text x="460" y="210" text-anchor="middle" class="t">Scheduled jobs</text>
+<text x="460" y="227" text-anchor="middle" class="dim">candidate</text>
+
+<rect class="wip" x="550" y="190" width="150" height="46" rx="6"/>
+<text x="625" y="210" text-anchor="middle" class="t">Agent memory</text>
+<text x="625" y="227" text-anchor="middle" class="tw2">research started</text>
+
+<rect class="cand" x="20" y="290" width="150" height="46" rx="6"/>
+<text x="95" y="310" text-anchor="middle" class="t">False passes</text>
+<text x="95" y="327" text-anchor="middle" class="dim">candidate</text>
+
+<rect class="cand" x="385" y="290" width="150" height="46" rx="6"/>
+<text x="460" y="310" text-anchor="middle" class="t">Permissions, gates</text>
+<text x="460" y="327" text-anchor="middle" class="dim">candidate</text>
+
+<rect class="wip" x="550" y="290" width="150" height="46" rx="6"/>
+<text x="625" y="310" text-anchor="middle" class="t">Dreams That Commit</text>
+<text x="625" y="327" text-anchor="middle" class="tw2">not started</text>
+
+<!-- methodology nodes -->
+<rect class="pub" x="250" y="400" width="220" height="46" rx="6"/>
+<text x="360" y="420" text-anchor="middle" class="t">Agent Scrum</text>
+<text x="360" y="437" text-anchor="middle" class="ta">v0.1 published · methodology paper</text>
+
+<rect class="wip" x="20" y="510" width="220" height="46" rx="6"/>
+<text x="130" y="530" text-anchor="middle" class="t">Agents Outrun Their Tests</text>
+<text x="130" y="547" text-anchor="middle" class="tw2">draft v0.2</text>
+
+<rect class="cand" x="290" y="510" width="140" height="46" rx="6"/>
+<text x="360" y="530" text-anchor="middle" class="t">Estimating</text>
+<text x="360" y="547" text-anchor="middle" class="dim">after the pilot</text>
+
+<rect class="wip" x="480" y="510" width="220" height="46" rx="6"/>
+<text x="590" y="530" text-anchor="middle" class="t">Kaizen for Agents</text>
+<text x="590" y="547" text-anchor="middle" class="tw2">draft v0.5 · release ~20 Nov</text>
+
+<!-- builds-on arrows -->
+<path class="ln" d="M110,190 L290,139" marker-end="url(#ah)"/>
+<path class="ln" d="M270,190 L328,139" marker-end="url(#ah)"/>
+<path class="lnd" d="M450,190 L394,139" marker-end="url(#ah)"/>
+<path class="ln" d="M610,190 L432,139" marker-end="url(#ah)"/>
+<path class="ln" d="M460,290 L460,239" marker-end="url(#ah)"/>
+<path class="ln" d="M625,290 L625,239" marker-end="url(#ah)"/>
+<path class="ln" d="M180,510 L272,449" marker-end="url(#ah)"/>
+<path class="ln" d="M360,510 L360,449" marker-end="url(#ah)"/>
+<path class="ln" d="M540,510 L448,449" marker-end="url(#ah)"/>
+
+<!-- loose, cross-family -->
+<path class="lnd" d="M360,400 L360,139" marker-end="url(#ah)"/>
+<path class="lnd" d="M650,510 L650,339" marker-end="url(#ah)"/>
+<path class="lnd" d="M70,510 L70,339" marker-end="url(#ah)"/>
+<text x="352" y="268" text-anchor="end" class="dim">runs on</text>
+<text x="658" y="474" class="dim">cites</text>
+<text x="78" y="474" class="dim">escaped failure</text>
+
+<!-- legend -->
+<g transform="translate(10,594)">
+<rect class="pub" x="0" y="0" width="24" height="14" rx="3"/><text x="32" y="11.5" class="dim">published</text>
+<rect class="wip" x="110" y="0" width="24" height="14" rx="3"/><text x="142" y="11.5" class="dim">in progress</text>
+<rect class="cand" x="232" y="0" width="24" height="14" rx="3"/><text x="264" y="11.5" class="dim">candidate</text>
+<path class="ln" d="M350,7 L384,7" marker-end="url(#ah)"/><text x="392" y="11.5" class="dim">builds on</text>
+<path class="lnd" d="M474,7 L508,7" marker-end="url(#ah)"/><text x="516" y="11.5" class="dim">loose dependency</text>
+</g>
+</svg>
+</div>
+<figcaption>Figure 1. The series as of 6 November 2026. An arrow points from a paper to a paper it builds on. A dashed arrow is a looser link, such as a citation or a shared problem. The outline shows status: solid blue, published; amber, in progress; dashed, candidate. Not drawn: the three Development Methodology candidates that remain sections of Agent Scrum, and the possible Agent Operations overview (Table 1).</figcaption>
+</figure>
+
+<h2><span class="n">3</span>The papers</h2>
+
+<p>Table 1 lists every paper and candidate. A candidate is a practice with enough evidence that it may deserve a paper. It stays a line in this table until the author picks it to write. The Development Methodology candidates stay as sections of Agent Scrum until they have enough evidence to stand alone.</p>
+
+<div class="tblock">
+<div class="tw"><table class="series">
+<colgroup><col style="width:44%"><col style="width:30%"><col style="width:26%"></colgroup>
+<thead><tr><th>Paper and DOI</th><th>Status</th><th>Builds on</th></tr></thead>
+<tbody>
+<tr class="grp"><td colspan="3">Agent Operations</td></tr>
+<tr><td>Persistent Agents on Claude Code [2]<span class="doi">doi:10.5281/zenodo.23787644<br>v1.2: doi:10.5281/zenodo.24022879</span></td><td><span class="st-pub">Published</span>, v1.2</td><td></td></tr>
+<tr><td>A Remote Agent Hub</td><td><span class="st-wip">Requirements</span></td><td>Persistent Agents</td></tr>
+<tr><td>Agent memory (title to be decided)</td><td><span class="st-wip">Research started</span></td><td>Persistent Agents</td></tr>
+<tr><td>Dreams That Commit: a nightly pass that corrects the agents' documents</td><td><span class="st-wip">Not started</span></td><td>Agent memory, Persistent Agents</td></tr>
+<tr><td>Scheduled agent jobs: the job list, per-job tool allowlists, logged refusals</td><td>Candidate</td><td>Persistent Agents (loose)</td></tr>
+<tr><td>False passes: checks that report a pass when nothing ran</td><td>Candidate</td><td></td></tr>
+<tr><td>Coordination: one agent routing messages, deduplication, broadcast rules</td><td>Candidate</td><td>Persistent Agents</td></tr>
+<tr><td>Permissions and gates: allowlists, sends that need approval</td><td>Candidate</td><td>Scheduled agent jobs</td></tr>
+<tr><td>Running an Agent Fleet (overview)</td><td>Possible, written last</td><td>All Operations members</td></tr>
+<tr class="grp"><td colspan="3">Development Methodology</td></tr>
+<tr><td>Agent Scrum (methodology paper) [1]<span class="doi">doi:10.5281/zenodo.23771170<br>v0.1: doi:10.5281/zenodo.23771171</span></td><td><span class="st-pub">Published</span>, v0.1; v0.2 after the estimation pilot</td><td>Persistent Agents (loose)</td></tr>
+<tr><td>Kaizen for Agents [3]</td><td><span class="st-wip">Draft v0.5</span>, release held to about 20 November for evaluation data</td><td>Agent Scrum, Persistent Agents; Dreams That Commit (loose)</td></tr>
+<tr><td>Agents Outrun Their Tests: Targeted CI and the escaped failure [4]</td><td><span class="st-wip">Draft v0.2</span>; the miss measurement is being collected</td><td>Agent Scrum; False passes (loose)</td></tr>
+<tr><td>Estimating</td><td>Candidate, if the pilot's results outgrow a section</td><td>Agent Scrum</td></tr>
+<tr><td>Sprint planning and refinement</td><td>Candidate, a section of Agent Scrum</td><td>Agent Scrum</td></tr>
+<tr><td>Reviews: two reviewers from different model vendors</td><td>Candidate, a section of Agent Scrum</td><td>Agent Scrum</td></tr>
+<tr><td>Impediments and escalation</td><td>Candidate, a section of Agent Scrum</td><td>Agent Scrum</td></tr>
+<tr class="grp"><td colspan="3">Both families</td></tr>
+<tr><td>Working Agents (this note)<span class="doi">DOI to be assigned</span></td><td><span class="st-wip">Draft v0.1</span></td><td>Indexes every paper</td></tr>
+</tbody></table></div>
+<p class="tcap">Table 1. Every paper and candidate, as of 6 November 2026. For a published paper, the first DOI is the concept DOI, which always resolves to the latest version; the second is the DOI of the current version.</p>
+</div>
+
+<h2><span class="n">4</span>How papers stay current</h2>
+
+<p>Most published papers are fixed once they appear. A correction arrives as an erratum or as a new paper. This series updates its papers after publication, on purpose. This is uncommon for published work, but the way DOIs are assigned supports it (Section 4.2).</p>
+
+<p>The reason is that the papers describe a system that keeps changing. A paper that was accurate in October can state a wrong sprint length, an old count or a retired tool by December, and a reader cannot tell which facts still hold unless someone checks. Living documents have precedents. Preprint servers such as arXiv keep numbered versions of a paper [7], and in medicine, living systematic reviews are updated as new evidence appears [6]. This series applies the same idea to working papers about a practice.</p>
+
+<h3>4.1 The weekly review</h3>
+
+<p>Each week the reference implementation's research agent runs a review in two parts.</p>
+
+<p><strong>Part A keeps published papers current.</strong> For each published paper, the review asks three questions. What changed in the system the paper describes? It reads the history of the files the paper's method depends on, checks for changes introduced by dedicated papers, and re-runs the commands the paper records. Is any stated fact now false, such as a version number, a sprint length, a count or a named tool? Has new prior work appeared that a reader would expect the paper to cite? The outcome is either a recorded "no change" or a new version.</p>
+
+<p><strong>Part B considers new papers.</strong> Which practices now have enough evidence to write up? The review reads the candidates in Table 1, adds candidates from the week's issues, incidents and merged changes, and brings the author at most two, each with its evidence, or reports that there is nothing new. Most weeks will not produce a paper.</p>
+
+<h3>4.2 Versions under one DOI</h3>
+
+<p>Each paper is published on Zenodo, an open research repository operated by CERN. On Zenodo, each version of a paper is a separate record with its own DOI and fixed files, linked to every other version [5]. A concept DOI stands for all versions and resolves to the latest one. For example, the Persistent Agents concept DOI, 10.5281/zenodo.23787644, resolves on 6 November 2026 to version 1.2, whose own DOI is 10.5281/zenodo.24022879. A reader who cites the concept DOI always reaches the current text. A reader who cites a version DOI gets exactly the text they read. An update never breaks a citation, which is why this model suits living papers.</p>
+
+<h3>4.3 Changes are visible, and publishing is the author's call</h3>
+
+<p>A new version adds a "Changes in vN.M" section near the top that says what changed and why, and the repository's README adds a line to its version list. A version that only corrects facts needs no new review. A version that changes a claim or adds a method gets a fresh review from a model by a different vendor than the one that drafted it.</p>
+
+<p>Publishing any version is the author's decision, made version by version. Agents research, draft, review and prepare each paper; nothing becomes public until he approves it.</p>
+
+<p>This note follows the same rules. It will have its own concept DOI, and it gets a new version when a paper ships, a candidate changes status, or the families change.</p>
+
+<h2><span class="n">5</span>What ships with each paper</h2>
+
+<ul>
+<li><strong>The paper</strong>, as a web page and as a PDF printed from the same source.</li>
+<li><strong>A deck</strong> of 14 to 16 slides for readers short on time, reusing the paper's figures, with the same numbers. It is published as a web page and a PDF.</li>
+<li><strong>An article</strong> of 1,000 to 1,500 words for X and LinkedIn. It covers the problem, what we did, the measured result and what we would tell another team, and it links to the paper and its DOI. A new version that changes a headline number updates the article too.</li>
+<li><strong>A public repository</strong> with the source, a README that lists each version, and a citation file.</li>
+<li><strong>Tools for implementers</strong>, where they help: scripts, templates or agent skills that let a reader apply the paper's ideas in their own setup, kept in the paper's repository and versioned with it.</li>
+<li><strong>A license</strong>: CC BY 4.0 [8]. Anyone may share and adapt the work, with attribution.</li>
+<li><strong>A Zenodo record</strong> in the Working Agents community [9], which collects every paper and every version in one place.</li>
+</ul>
+
+<p>The article became part of each release on 6 November 2026. Agent Scrum and Persistent Agents have their decks; their articles are still to be written.</p>
+
+<h2><span class="n">6</span>How to follow and give feedback</h2>
+
+<ul>
+<li><strong>Follow the community.</strong> The Working Agents community page on Zenodo, <a href="https://zenodo.org/communities/working-agents">zenodo.org/communities/working-agents</a>, lists every paper and version as it is released.</li>
+<li><strong>Open an issue.</strong> Each paper's repository takes feedback as GitHub issues: a wrong fact, a missing citation, a question about method, or a report of how a practice worked for another team. The published papers are at <a href="https://github.com/daveremy/agent-scrum/issues">github.com/daveremy/agent-scrum</a> and <a href="https://github.com/daveremy/persistent-agents/issues">github.com/daveremy/persistent-agents</a>. This note will have its own repository when it is published.</li>
+<li><strong>Read the articles.</strong> The article for each paper appears on X (@daveremy) and LinkedIn.</li>
+</ul>
+
+<p>Reports from other teams are the most useful feedback, because the largest limitation of the series is that it has one case. A change made in response to feedback is listed in the next version's "Changes" section.</p>
+
+<h2><span class="n">7</span>Limitations</h2>
+
+<p><strong>One case.</strong> Every paper describes one scenario: one person working with one fleet of agents, in one or more teams, on one set of codebases, in late 2026. How the practices change when several people share a fleet is future work. Results may depend on the person, the products, the models then available and the budget, and the series cannot separate those factors.</p>
+
+<p><strong>Self-reported.</strong> The author runs the system he describes, and AI agents both operate that system and help write about it. Numbers come from the reference implementation's own logs and repositories. Papers print the commands behind their numbers where they can, and each draft is reviewed by a model from a second vendor. None of this replaces a study by someone outside the reference implementation.</p>
+
+<p><strong>Selection.</strong> The team chooses what to write, and it ranks candidates partly by how much evidence exists. Practices with good records get papers first. Practices that failed quietly, or left little record, may never get one. The two families are also our own classification and may change.</p>
+
+<p><strong>Living text.</strong> Revisions keep the papers accurate, but a claim quoted from one version may be gone from the next. Cite the version DOI when the exact wording matters.</p>
+
+<h2><span class="n">R</span>References</h2>
+<ol class="refs">
+<li>Remy, D. <em>Agent Scrum: A sprint methodology for continuous software development by AI agent teams, with observations from 324 sprints.</em> Working paper, version 0.1, 2026. <a href="https://doi.org/10.5281/zenodo.23771171">doi:10.5281/zenodo.23771171</a>. <a href="https://daveremy.github.io/agent-scrum/">daveremy.github.io/agent-scrum</a></li>
+<li>Remy, D. <em>Persistent Agents on Claude Code.</em> Working note, version 1.2, 2026. <a href="https://doi.org/10.5281/zenodo.24022879">doi:10.5281/zenodo.24022879</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23787644">doi:10.5281/zenodo.23787644</a>). <a href="https://daveremy.github.io/persistent-agents/">daveremy.github.io/persistent-agents</a></li>
+<li>Remy, D. <em>Kaizen for Agents: Continuous improvement in an AI software team, read against Toyota, software process improvement and compound engineering.</em> Working paper, draft v0.5, 2026. Forthcoming.</li>
+<li>Remy, D. <em>Agents Outrun Their Tests: Targeted CI and the escaped failure.</em> Working paper, draft v0.2, 2026. Forthcoming.</li>
+<li>Zenodo. Manage versions. <a href="https://help.zenodo.org/docs/deposit/manage-versions/">help.zenodo.org/docs/deposit/manage-versions</a></li>
+<li>Elliott, J. H., Turner, T., Clavisi, O. et al. Living systematic reviews: an emerging opportunity to narrow the evidence-practice gap. <em>PLoS Medicine</em> 11(2): e1001603, 2014. <a href="https://doi.org/10.1371/journal.pmed.1001603">doi:10.1371/journal.pmed.1001603</a></li>
+<li>arXiv. Submit a new version of a work. <a href="https://info.arxiv.org/help/replace.html">info.arxiv.org/help/replace.html</a></li>
+<li>Creative Commons. Attribution 4.0 International (CC BY 4.0). <a href="https://creativecommons.org/licenses/by/4.0/">creativecommons.org/licenses/by/4.0</a></li>
+<li>Working Agents community. Zenodo. <a href="https://zenodo.org/communities/working-agents">zenodo.org/communities/working-agents</a></li>
+<li>Zinsser, W. <em>Writing to Learn.</em> Harper &amp; Row, 1988.</li>
+</ol>
+
+<p class="disclose"><em>Created in collaboration with AI.</em></p>
+</article>
+</body>
+</html>
