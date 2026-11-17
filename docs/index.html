@@ -120,7 +120,8 @@ a{color:var(--accent)}
 
 <h1>Working Agents</h1>
 <p class="subtitle">A living research program on frameworks, principles and practices for working with AI agents</p>
-<p class="byline">Dave Remy · Working note · Draft v0.1 · 6 November 2026</p>
+<p class="byline">Dave Remy · Working note · Version 0.1.1 · 17 November 2026</p>
+<p><em>Changes in 0.1.1 (17 November 2026): adds WARM, the Working Agents Reference Model, published 14 November and revised 17 November, to Section 2, Figure 1, Table 1 and the references, and brings the versions of Persistent Agents (1.3) and Agent Scrum (0.1.1) up to date. Nothing else changed.</em></p>
 <!-- Placeholder: on publication the PDF is renamed working-agents.pdf and the DOI is added to the byline. -->
 <p class="pdflink"><a href="working-agents.pdf">PDF</a> · DOI <a href="https://doi.org/10.5281/zenodo.24023471">10.5281/zenodo.24023471</a></p>
 
@@ -160,18 +161,23 @@ a{color:var(--accent)}
 
 <p><strong>Development Methodology</strong> covers how the fleet builds software. Agent Scrum [1] is its methodology paper and describes the whole method. Dedicated papers go deeper into one part of it, such as continuous improvement (Kaizen for Agents [3]) or choosing which tests to run in continuous integration (Agents Outrun Their Tests [4]). When a dedicated paper's approach has results, Agent Scrum gets a revision that summarizes the change in a paragraph and cites the dedicated paper for the detail. Agent Scrum does not wait for the dedicated paper to be published. It waits for results: its next version follows a pilot of a new way to estimate stories.</p>
 
+<p><strong>WARM</strong>, the Working Agents Reference Model [11], spans both families. It is a reference model for systems in which agents do sustained work: a shared vocabulary for their parts and how they relate, with 25 platform services in six groups and the domains of work that agents carry out. The papers in both families describe parts that WARM names, and later papers can use its terms.</p>
+
 <p>Each paper names the papers it builds on, in its repository and in its Zenodo record. A paper is never recorded as a version of another paper. Figure 1 shows the dependencies. Three cross the family line. Agent Scrum runs on the persistent agents that Persistent Agents describes. Kaizen for Agents discusses a nightly pass that corrects the agents' documents, which Dreams That Commit will describe in full. Agents Outrun Their Tests is about failures that test selection misses, a special case of the checks that report a pass without having tested anything, which the False passes candidate would cover.</p>
 
 <figure>
 <div class="plate">
 <svg viewBox="0 0 720 640" role="img" aria-labelledby="f1t">
-<title id="f1t">Dependency graph of the Working Agents series. Agent Operations: Persistent Agents (published) with Remote Agent Hub, Coordination, Scheduled jobs and Agent memory building on it; Permissions and gates builds on Scheduled jobs; Dreams That Commit builds on Agent memory; False passes stands alone. Development Methodology: Agent Scrum (published) with Agents Outrun Their Tests, Estimating and Kaizen for Agents building on it. Loose links: Agent Scrum to Persistent Agents, Kaizen for Agents to Dreams That Commit, Agents Outrun Their Tests to False passes.</title>
+<title id="f1t">Dependency graph of the Working Agents series. At the top, this note and WARM, the reference model, which spans both families. Agent Operations: Persistent Agents (published) with Remote Agent Hub, Coordination, Scheduled jobs and Agent memory building on it; Permissions and gates builds on Scheduled jobs; Dreams That Commit builds on Agent memory; False passes stands alone. Development Methodology: Agent Scrum (published) with Agents Outrun Their Tests, Estimating and Kaizen for Agents building on it. Loose links: Agent Scrum to Persistent Agents, Kaizen for Agents to Dreams That Commit, Agents Outrun Their Tests to False passes.</title>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
 
 <!-- this note -->
-<rect class="box" x="160" y="8" width="400" height="44" rx="6"/>
-<text x="360" y="28" text-anchor="middle" class="t">This note: Working Agents</text>
-<text x="360" y="44" text-anchor="middle" class="dim">draft v0.1 · indexes every paper below</text>
+<rect class="box" x="20" y="8" width="320" height="44" rx="6"/>
+<text x="180" y="28" text-anchor="middle" class="t">This note: Working Agents</text>
+<text x="180" y="44" text-anchor="middle" class="dim">v0.1.1 · indexes every paper below</text>
+<rect class="pub" x="380" y="8" width="320" height="44" rx="6"/>
+<text x="540" y="28" text-anchor="middle" class="t">WARM: the reference model</text>
+<text x="540" y="44" text-anchor="middle" class="ta">v0.1.1 published · spans both families</text>
 
 <!-- family bands -->
 <rect class="band" x="4" y="64" width="712" height="290" rx="8"/>
@@ -183,7 +189,7 @@ a{color:var(--accent)}
 <!-- operations nodes -->
 <rect class="pub" x="260" y="90" width="200" height="46" rx="6"/>
 <text x="360" y="110" text-anchor="middle" class="t">Persistent Agents</text>
-<text x="360" y="127" text-anchor="middle" class="ta">v1.2 published</text>
+<text x="360" y="127" text-anchor="middle" class="ta">v1.3 published</text>
 
 <rect class="wip" x="20" y="190" width="150" height="46" rx="6"/>
 <text x="95" y="210" text-anchor="middle" class="t">Remote Agent Hub</text>
@@ -216,7 +222,7 @@ a{color:var(--accent)}
 <!-- methodology nodes -->
 <rect class="pub" x="250" y="400" width="220" height="46" rx="6"/>
 <text x="360" y="420" text-anchor="middle" class="t">Agent Scrum</text>
-<text x="360" y="437" text-anchor="middle" class="ta">v0.1 published · methodology paper</text>
+<text x="360" y="437" text-anchor="middle" class="ta">v0.1.1 published · methodology paper</text>
 
 <rect class="wip" x="20" y="510" width="220" height="46" rx="6"/>
 <text x="130" y="530" text-anchor="middle" class="t">Agents Outrun Their Tests</text>
@@ -259,7 +265,7 @@ a{color:var(--accent)}
 </g>
 </svg>
 </div>
-<figcaption>Figure 1. The series as of 6 November 2026. An arrow points from a paper to a paper it builds on. A dashed arrow is a looser link, such as a citation or a shared problem. The outline shows status: solid blue, published; amber, in progress; dashed, candidate. Not drawn: the three Development Methodology candidates that remain sections of Agent Scrum, and the possible Agent Operations overview (Table 1).</figcaption>
+<figcaption>Figure 1. The series as of 17 November 2026. WARM, at the top right, spans both families and has no arrows, since the papers below describe parts it names rather than building on it. An arrow points from a paper to a paper it builds on. A dashed arrow is a looser link, such as a citation or a shared problem. The outline shows status: solid blue, published; amber, in progress; dashed, candidate. Not drawn: the three Development Methodology candidates that remain sections of Agent Scrum, and the possible Agent Operations overview (Table 1).</figcaption>
 </figure>
 
 <h2><span class="n">3</span>The papers</h2>
@@ -272,7 +278,7 @@ a{color:var(--accent)}
 <thead><tr><th>Paper and DOI</th><th>Status</th><th>Builds on</th></tr></thead>
 <tbody>
 <tr class="grp"><td colspan="3">Agent Operations</td></tr>
-<tr><td>Persistent Agents on Claude Code [2]<span class="doi">doi:10.5281/zenodo.23787644<br>v1.2: doi:10.5281/zenodo.24022879</span></td><td><span class="st-pub">Published</span>, v1.2</td><td></td></tr>
+<tr><td>Persistent Agents on Claude Code [2]<span class="doi">doi:10.5281/zenodo.23787644<br>v1.3: doi:10.5281/zenodo.24198517</span></td><td><span class="st-pub">Published</span>, v1.3</td><td></td></tr>
 <tr><td>A Remote Agent Hub</td><td><span class="st-wip">Requirements</span></td><td>Persistent Agents</td></tr>
 <tr><td>Agent memory (title to be decided)</td><td><span class="st-wip">Research started</span></td><td>Persistent Agents</td></tr>
 <tr><td>Dreams That Commit: a nightly pass that corrects the agents' documents</td><td><span class="st-wip">Not started</span></td><td>Agent memory, Persistent Agents</td></tr>
@@ -282,7 +288,7 @@ a{color:var(--accent)}
 <tr><td>Permissions and gates: allowlists, sends that need approval</td><td>Candidate</td><td>Scheduled agent jobs</td></tr>
 <tr><td>Running an Agent Fleet (overview)</td><td>Possible, written last</td><td>All Operations members</td></tr>
 <tr class="grp"><td colspan="3">Development Methodology</td></tr>
-<tr><td>Agent Scrum (methodology paper) [1]<span class="doi">doi:10.5281/zenodo.23771170<br>v0.1: doi:10.5281/zenodo.23771171</span></td><td><span class="st-pub">Published</span>, v0.1; v0.2 after the estimation pilot</td><td>Persistent Agents (loose)</td></tr>
+<tr><td>Agent Scrum (methodology paper) [1]<span class="doi">doi:10.5281/zenodo.23771170<br>v0.1.1: doi:10.5281/zenodo.24142104</span></td><td><span class="st-pub">Published</span>, v0.1.1; v0.2 after the estimation pilot</td><td>Persistent Agents (loose)</td></tr>
 <tr><td>Kaizen for Agents [3]</td><td><span class="st-wip">Draft v0.5</span>, release held to about 20 November for evaluation data</td><td>Agent Scrum, Persistent Agents; Dreams That Commit (loose)</td></tr>
 <tr><td>Agents Outrun Their Tests: Targeted CI and the escaped failure [4]</td><td><span class="st-wip">Draft v0.2</span>; the miss measurement is being collected</td><td>Agent Scrum; False passes (loose)</td></tr>
 <tr><td>Estimating</td><td>Candidate, if the pilot's results outgrow a section</td><td>Agent Scrum</td></tr>
@@ -290,9 +296,10 @@ a{color:var(--accent)}
 <tr><td>Reviews: two reviewers from different model vendors</td><td>Candidate, a section of Agent Scrum</td><td>Agent Scrum</td></tr>
 <tr><td>Impediments and escalation</td><td>Candidate, a section of Agent Scrum</td><td>Agent Scrum</td></tr>
 <tr class="grp"><td colspan="3">Both families</td></tr>
-<tr><td>Working Agents (this note)<span class="doi">DOI 10.5281/zenodo.24023471</span></td><td><span class="st-wip">Draft v0.1</span></td><td>Indexes every paper</td></tr>
+<tr><td>WARM: the Working Agents Reference Model [11]<span class="doi">doi:10.5281/zenodo.24238372<br>v0.1.1: doi:10.5281/zenodo.24318937</span></td><td><span class="st-pub">Published</span>, v0.1.1</td><td>Agent Scrum, Persistent Agents (references)</td></tr>
+<tr><td>Working Agents (this note)<span class="doi">DOI 10.5281/zenodo.24023471</span></td><td><span class="st-pub">Published</span>, v0.1.1</td><td>Indexes every paper</td></tr>
 </tbody></table></div>
-<p class="tcap">Table 1. Every paper and candidate, as of 6 November 2026. For a published paper, the first DOI is the concept DOI, which always resolves to the latest version; the second is the DOI of the current version.</p>
+<p class="tcap">Table 1. Every paper and candidate, as of 17 November 2026. For a published paper, the first DOI is the concept DOI, which always resolves to the latest version; the second is the DOI of the current version.</p>
 </div>
 
 <h2><span class="n">4</span>How papers stay current</h2>
@@ -357,8 +364,8 @@ a{color:var(--accent)}
 
 <h2><span class="n">R</span>References</h2>
 <ol class="refs">
-<li>Remy, D. <em>Agent Scrum: A sprint methodology for continuous software development by AI agent teams, with observations from 324 sprints.</em> Working paper, version 0.1, 2026. <a href="https://doi.org/10.5281/zenodo.23771171">doi:10.5281/zenodo.23771171</a>. <a href="https://daveremy.github.io/agent-scrum/">daveremy.github.io/agent-scrum</a></li>
-<li>Remy, D. <em>Persistent Agents on Claude Code.</em> Working note, version 1.2, 2026. <a href="https://doi.org/10.5281/zenodo.24022879">doi:10.5281/zenodo.24022879</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23787644">doi:10.5281/zenodo.23787644</a>). <a href="https://daveremy.github.io/persistent-agents/">daveremy.github.io/persistent-agents</a></li>
+<li>Remy, D. <em>Agent Scrum: A sprint methodology for continuous software development by AI agent teams, with observations from 324 sprints.</em> Working paper, version 0.1.1, 2026. <a href="https://doi.org/10.5281/zenodo.24142104">doi:10.5281/zenodo.24142104</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23771170">doi:10.5281/zenodo.23771170</a>). <a href="https://daveremy.github.io/agent-scrum/">daveremy.github.io/agent-scrum</a></li>
+<li>Remy, D. <em>Persistent Agents on Claude Code.</em> Working note, version 1.3, 2026. <a href="https://doi.org/10.5281/zenodo.24198517">doi:10.5281/zenodo.24198517</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23787644">doi:10.5281/zenodo.23787644</a>). <a href="https://daveremy.github.io/persistent-agents/">daveremy.github.io/persistent-agents</a></li>
 <li>Remy, D. <em>Kaizen for Agents: Continuous improvement in an AI software team, read against Toyota, software process improvement and compound engineering.</em> Working paper, draft v0.5, 2026. Forthcoming.</li>
 <li>Remy, D. <em>Agents Outrun Their Tests: Targeted CI and the escaped failure.</em> Working paper, draft v0.2, 2026. Forthcoming.</li>
 <li>Zenodo. Manage versions. <a href="https://help.zenodo.org/docs/deposit/manage-versions/">help.zenodo.org/docs/deposit/manage-versions</a></li>
@@ -367,6 +374,7 @@ a{color:var(--accent)}
 <li>Creative Commons. Attribution 4.0 International (CC BY 4.0). <a href="https://creativecommons.org/licenses/by/4.0/">creativecommons.org/licenses/by/4.0</a></li>
 <li>Working Agents community. Zenodo. <a href="https://zenodo.org/communities/working-agents">zenodo.org/communities/working-agents</a></li>
 <li>Zinsser, W. <em>Writing to Learn.</em> Harper &amp; Row, 1988.</li>
+<li>Remy, D. <em>WARM: the Working Agents Reference Model.</em> Working paper, version 0.1.1, 2026. <a href="https://doi.org/10.5281/zenodo.24318937">doi:10.5281/zenodo.24318937</a> (all versions: <a href="https://doi.org/10.5281/zenodo.24238372">doi:10.5281/zenodo.24238372</a>). <a href="https://daveremy.github.io/warm/">daveremy.github.io/warm</a></li>
 </ol>
 
 <p class="disclose"><em>Created in collaboration with AI.</em></p>
