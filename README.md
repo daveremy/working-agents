@@ -13,6 +13,7 @@ Working Agents is a series of living working papers that develops a framework fo
 | [Persistent Agents on Claude Code](https://github.com/daveremy/persistent-agents) | Agent Operations | Published, [doi:10.5281/zenodo.23787644](https://doi.org/10.5281/zenodo.23787644) |
 | [Agent Scrum](https://github.com/daveremy/agent-scrum) | Development Methodology | Published, [doi:10.5281/zenodo.23771170](https://doi.org/10.5281/zenodo.23771170) |
 | [WARM: the Working Agents Reference Model](https://github.com/daveremy/warm) | Both families | Published, [doi:10.5281/zenodo.24238372](https://doi.org/10.5281/zenodo.24238372) |
+| Keeping Agent Memory True | Agent Operations | Pre-registered v0.1, [doi:10.5281/zenodo.24029465](https://doi.org/10.5281/zenodo.24029465); full text under embargo to 31 January 2027 |
 | Kaizen for Agents | Development Methodology | Forthcoming |
 | Agents Outrun Their Tests | Development Methodology | Forthcoming |
 
@@ -28,6 +29,7 @@ Open an issue on this repository or on the paper's own repository.
 
 ## Versions
 
+- v0.1.3 (17 November 2026): lists the memory paper, pre-registered as v0.1 on 6 November.
 - v0.1.2 (17 November 2026): Persistent Agents at version 1.4, the paper on the reference implementation.
 - v0.1.1 (17 November 2026): adds WARM; current versions of Persistent Agents and Agent Scrum.
 - v0.1 (6 November 2026): first version, [doi:10.5281/zenodo.24023472](https://doi.org/10.5281/zenodo.24023472).
