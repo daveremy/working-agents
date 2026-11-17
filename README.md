@@ -28,6 +28,7 @@ Open an issue on this repository or on the paper's own repository.
 
 ## Versions
 
+- v0.1.2 (17 November 2026): Persistent Agents at version 1.4, the paper on the reference implementation.
 - v0.1.1 (17 November 2026): adds WARM; current versions of Persistent Agents and Agent Scrum.
 - v0.1 (6 November 2026): first version, [doi:10.5281/zenodo.24023472](https://doi.org/10.5281/zenodo.24023472).
 
